@@ -1,0 +1,52 @@
+h4 {
+    font-size: 18px;
+    text-align: center;
+}
+
+img {
+    cursor: pointer;
+}
+
+
+
+.button-prev, .button-next {
+    display: none;
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 1 ;
+    margin-top: -200px !important;
+}
+
+@media (min-width: 992px){
+    .button-prev, .button-next {
+        display: block;
+    }
+
+    .button-prev {
+        left: 2vw;
+    }
+    
+    .button-next {
+        right: 2vw;
+    }
+
+}
+
+@media (min-width: 767px){
+    /* min-width: 767px; */
+    
+    .button-prev, .button-next {
+        display: block;
+    }
+
+    .button-prev {
+        left: 4vw;
+    }
+    
+    .button-next {
+        right: 4vw;
+    }
+
+}

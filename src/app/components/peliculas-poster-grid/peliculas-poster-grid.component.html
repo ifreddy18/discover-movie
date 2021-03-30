@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-3 text-center" *ngFor="let movie of movies">
+
+
+        <div class="img-container">
+            
+            <span class="vote-average"> 
+                <i class="fas fa-star"></i> 
+                <h5>
+                    {{ movie.vote_average | number:'1.1-2' }} / 10
+                </h5>
+            </span>
+          
+            <span class="btn movie-detail"
+                (click)="onMovieClick(movie)">
+                View Details
+            </span>
+
+            <i class="fas fa-heart fa-2x"
+                [ngClass]="{ 'like': likesMoviesId.includes(movie.id)}"
+                (click)="toFavoritesMovies(movie)"></i>
+
+            <img [src]="movie.poster_path | poster"
+                class="img-fluid poster"
+                (click)="onMovieClick(movie)"
+                style="cursor: pointer; margin-top: -100px;">
+        
+        </div>
+
+        <div>
+            <h4 style="font-size: 18px; margin-top: 10px; margin-bottom: 0px;">
+                {{movie.title}}
+            </h4>
+            <small class="text-white"style="color: #7B87B8 !important;">
+                {{movie.release_date | date: 'yyyy' }}
+            </small>
+        </div>
+        
+
+
+
+    </div>
+</div>

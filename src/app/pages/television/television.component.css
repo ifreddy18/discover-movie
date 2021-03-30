@@ -1,0 +1,6 @@
+@media (min-width: 992px) { 
+    .star-rating {
+        padding-right: 0 !important;
+        margin-left: -150px !important;
+    }
+}

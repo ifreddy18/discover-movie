@@ -1,0 +1,22 @@
+<div class="row mb-5">
+    <div class="col">
+
+        <h3 class="mb-4">Seasons ({{seasons.length}})</h3>
+
+        <div *ngFor="let season of seasons; let i = index">
+            <button class="accordion bg-custom-secondary"
+                    [ngClass]="{'active': accordionState[i]}"
+                    (click)="onClickAccordion(i)">
+                {{season.name | seasonName:i}}
+            </button>
+            <div class="panel bg-custom-primary"
+                [ngClass]="{'dislayPlanel': panelState[i]}">
+                <p class="text-dark">
+                    {{season.overview | overview}}
+                </p>
+            </div>
+        </div>
+        
+
+    </div>
+</div>

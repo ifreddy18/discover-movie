@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-3 text-center mb-5" *ngFor="let tv of television">
+
+
+        <div class="img-container">
+            
+            <span class="vote-average"> 
+                <i class="fas fa-star"></i> 
+                <h5>
+                    {{ tv.vote_average | number:'1.1-2' }} / 10
+                </h5>
+            </span>
+          
+            <span class="btn movie-detail"
+                (click)="onTelevisionClick(tv)">
+                View Details
+            </span>
+
+            <i class="fas fa-heart fa-2x"
+                [ngClass]="{ 'like': likesTelevisionId.includes(tv.id)}"
+                (click)="toFavoritesTelevision(tv)"></i>
+
+            <img [src]="tv.poster_path | poster"
+                class="img-fluid poster"
+                (click)="onTelevisionClick(tv)"
+                style="cursor: pointer; margin-top: -100px;">
+        
+        </div>
+
+        <div>
+            <h4 style="font-size: 18px; margin-top: 10px; margin-bottom: 0px;">
+                {{tv.name}}
+            </h4>
+        </div>
+        
+
+
+
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="row" *ngIf="television">
+    <div class="col-md-6">
+        <!-- Imagen -->
+        <img [src]="television.poster_path | poster" 
+             [alt]="television.name"
+             class="img-thumbnail">
+    </div>
+
+    <div class="col-md-6 mt-1">
+        <h3>{{ television.name }} 
+            <small *ngIf="television.name != television.original_name">
+                ({{television.original_name}})
+            </small>
+        </h3>
+
+        <div class="row" *ngIf="firstYear !== null">
+            <div class="col text-white"
+                 style="font-weight: bold;">
+                {{ firstYear }} - {{ lastYear }}
+            </div>
+        </div>
+
+        <div class="row" *ngIf="genres.length > 0">
+            <div class="col">
+                <span *ngFor="let genre of genres"
+                       class="badge bg-custom-secondary me-2">
+                    {{genre.name}}
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-start"
+                 style="padding-right: 0 !important;">
+                <star-rating [value]="television.vote_average" 
+                        totalstars="10" 
+                        checkedcolor="red" 
+                        uncheckedcolor="grey" 
+                        size="16px" 
+                        readonly="false">
+                </star-rating>
+            </div>
+            <div class="col text-custom-secondary text-start star-rating">
+                {{ television.vote_average | number:'1.1-2' }}
+            </div>
+        </div>
+
+        <div class="row" *ngIf="television.number_of_episodes > 0">
+            <div class="col text-white">
+                Total episodes: <span class="text-custom-secondary">{{ television.number_of_episodes }}</span>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="television.episode_run_time.length > 0">
+            <div class="col text-white">
+                Episode runtime: <span class="text-custom-secondary">{{ television.episode_run_time }} minutes</span>
+            </div>
+        </div>
+
+
+        <hr>
+        <div class="row">
+            <div class="col text-white">
+                {{ television.overview }}
+            </div>
+        </div>
+
+        <hr>
+
+
+        <div class="row mt-5">
+            <div class="col">
+                <button class="btn btn-outline-info m-2" (click)="goBack()">
+                    Back
+                </button>
+
+                <button class="btn btn-outline-danger m-2"
+                        [ngClass]="{'active': inFavorite}" 
+                        (click)="toFavorite(television)">
+                    <i class="fas fa-heart"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-5" *ngIf="seasons">
+        <div class="col">
+            <app-seasons [seasons]="seasons"></app-seasons>
+        </div>
+    </div>
+
+</div>

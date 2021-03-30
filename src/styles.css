@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~swiper/swiper-bundle';
+
+body {
+    background-color: #14161E;
+}
+
+h1,h2,h3,h4,h5 {
+    font-weight: 200;
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+hr{
+    color: white;
+}
+
+.btn-outline-success {
+    border-color: #bd4c5f !important;;
+    color: #bd4c5f !important;;
+}
+
+.btn-outline-success:hover {
+    background-color: #272a36;
+    color: white !important;
+}
+
+.block {
+    display:block;
+}
+
+
+.text-custom-primary {
+    color: #bd4c5f !important;
+}
+
+.text-custom-secondary {
+    color: #7B87B8 !important;
+}
+
+.bg-custom-primary {
+    background: #7B87B8 !important;
+    color: black !important;
+}
+
+.bg-custom-secondary {
+    background: #272a36 !important;
+    color: white !important;
+}
+
+
+
+
+
+
