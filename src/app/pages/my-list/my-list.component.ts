@@ -27,6 +27,7 @@ export class MyListComponent implements OnInit {
   }
 
   setRandoms(likeMedia: Movie[] | Television[], randomMedia: Movie[] | Television[]): void {
+    // debugger
     let max = likeMedia.length;
     let item;
 
@@ -45,7 +46,7 @@ export class MyListComponent implements OnInit {
   }
 
   getRandomItems(array: Array<any>): any {
-    return array[Math.floor(Math.random() * (array.length - 1))];
+    return array[Math.floor(Math.random() * array.length)];
   }
 
 
