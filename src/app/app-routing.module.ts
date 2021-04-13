@@ -7,12 +7,14 @@ import { TrendingComponent } from './pages/trending/trending.component';
 import { MyListComponent } from './pages/my-list/my-list.component';
 import { TelevisionComponent } from './pages/television/television.component';
 import { AdvancedBrowserComponent } from './pages/advanced-browser/advanced-browser.component';
+import { RecommendationsComponent } from './pages/recommendations/recommendations.component';
 
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'trending', component: TrendingComponent},
-  {path: 'my-lists', component: MyListComponent},
+  {path: 'favorites', component: MyListComponent},
+  {path: 'recommendations', component: RecommendationsComponent},
   {path: 'movie/:id', component: PeliculaComponent},
   {path: 'tv/:id', component: TelevisionComponent},
   {path: 'search/:texto', component: BuscarComponent},

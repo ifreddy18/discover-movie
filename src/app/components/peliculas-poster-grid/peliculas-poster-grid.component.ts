@@ -14,6 +14,7 @@ export class PeliculasPosterGridComponent implements OnInit {
   likesMoviesId: number[] = [];
   likesMovies: Movie[];
 
+
   constructor(public movieService: MovieService,
               public customMovieService: CustomMoviesService
   ) {

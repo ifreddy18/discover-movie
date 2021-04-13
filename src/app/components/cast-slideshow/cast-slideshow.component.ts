@@ -1,45 +1,79 @@
-import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 import { Cast } from 'src/app/interfaces/credits-response';
-import Swiper from 'swiper/bundle';
+import Swiper, { SwiperOptions } from 'swiper/bundle';
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Controller,
+  Autoplay
+
+} from 'swiper/core';
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Controller, Autoplay]);
 
 @Component({
   selector: 'app-cast-slideshow',
   templateUrl: './cast-slideshow.component.html',
   styleUrls: ['./cast-slideshow.component.css']
 })
-export class CastSlideshowComponent implements OnInit, AfterViewInit {
+export class CastSlideshowComponent  {
 
   @Input() cast: Cast[];
 
-  constructor() { }
+  slidesPerView = 5.3;
+  swiper: Swiper;
 
-  ngOnInit(): void {
+  swiperParams: SwiperOptions = {
+    // Optional parameters
+    slidesPerView: this.slidesPerView,
+    // autoplay: {
+    //   delay: 2500
+    // },
+
+    // Scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      draggable: true,
+      hide: false
+    },
+  };
+
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    const windowsWidth = window.innerWidth;
+
+    this.slidesPerView = 5.3;
+
+    if (windowsWidth < 992){
+      this.slidesPerView = 4.3;
+    }
+
+    if (windowsWidth < 768){
+      this.slidesPerView = 3.3;
+    }
+
   }
 
-  ngAfterViewInit(): void {
-    const swiper = new Swiper('.swiper-container', {
-      // Optional parameters
-      loop: false,
-      slidesPerView: 5.3,
-      freeMode: true,
-      spaceBetween: 15,
+  constructor() {
+    this.onResize();
+  }
 
-      // If we need pagination
-      pagination: {
-        el: '.swiper-pagination',
-      },
+  onSwiper(swiper): void {
+    this.swiper = swiper;
+  }
 
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+  onSlideChange(): void {
+    // console.log('slide change');
+  }
 
-      // And if we need scrollbar
-      scrollbar: {
-        el: '.swiper-scrollbar',
-      },
-    });
+  slideNext(): void {
+    this.swiper.slideNext();
+  }
+
+  slidePrev(): void {
+    this.swiper.slidePrev();
   }
 
 }

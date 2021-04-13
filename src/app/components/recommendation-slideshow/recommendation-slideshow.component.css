@@ -16,7 +16,8 @@ img {
     position: absolute;
     cursor: pointer;
     z-index: 1 ;
-    margin-top: -200px !important;
+    /* margin-top: -250px !important; */
+    transform: translateY(-200px);
 }
 
 @media (min-width: 992px){

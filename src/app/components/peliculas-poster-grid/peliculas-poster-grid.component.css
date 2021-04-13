@@ -68,3 +68,9 @@ h3 {
     }
 }
 
+@media (max-width: 767px) {
+    .col-md-3 {
+        max-width: 260px;
+    }
+}
+

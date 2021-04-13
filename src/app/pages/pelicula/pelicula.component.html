@@ -1,16 +1,36 @@
-<div class="row" *ngIf="movie">
-    <div class="col-md-6">
+<div class="row mt-3" *ngIf="movie">
+    <div class="col-md-5 text-center">
         <!-- Imagen -->
         <img [src]="movie.poster_path | poster" 
              [alt]="movie.title"
              class="img-thumbnail">
     </div>
 
-    <div class="col-md-6">
-        <h3>{{ movie.title }}</h3>
+    <div class="col-md-7">
+        <h3>{{ movie.title }}
+            <small *ngIf="movie.title != movie.original_title">
+                ({{movie.original_title}})
+            </small>
+        </h3>
+
+        <div class="row" *ngIf="movie.release_date !== null">
+            <div class="col text-white"
+                 style="font-weight: bold;">
+                {{ movie.release_date | date }}
+            </div>
+        </div>
+
+        <div class="row" *ngIf="movie.genres.length > 0">
+            <div class="col">
+                <span *ngFor="let genre of movie.genres"
+                       class="badge bg-custom-secondary me-2">
+                    {{genre.name}}
+                </span>
+            </div>
+        </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col-5">
                 <star-rating [value]="movie.vote_average" 
                         totalstars="10" 
                         checkedcolor="red" 
@@ -19,16 +39,24 @@
                         readonly="false">
                 </star-rating>
             </div>
-            <div class="col text-white">
+            <div class="col-1 text-custom-secondary text-start star-rating">
                 {{ movie.vote_average | number:'1.1-2' }}
             </div>
         </div>
 
+        <div class="row" *ngIf="movie.runtime > 0">
+            <div class="col text-white">
+                Duration: <span class="text-custom-secondary">{{ movie.runtime }} minutes</span>
+            </div>
+        </div>
+
+        <hr>
         <div class="row">
             <div class="col text-white">
                 {{ this.movie.overview }}
             </div>
         </div>
+        <hr>
 
         <div class="row mt-5">
             <div class="col">
@@ -48,8 +76,16 @@
 
 </div>
 
+<h3 class="mt-5 mb-3">Cast</h3>
 <div class="row mt-4" *ngIf="cast.length > 0">
     <div class="col">
         <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
+    </div>
+</div>
+
+<h3 class="mt-5 mb-3" *ngIf="movie">Recommendations related to {{ movie.title }}</h3>
+<div class="row mt-5" *ngIf="movie">
+    <div class="col">
+        <app-recommendation-slideshow [mediaType]="'movie'" [id]="movie.id"></app-recommendation-slideshow>
     </div>
 </div>

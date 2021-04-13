@@ -19,6 +19,8 @@ import { RecommendationSlideshowComponent } from './recommendation-slideshow/rec
 // Others
 import { SwiperModule } from 'swiper/angular';
 import { FavoritesSlideshowComponent } from './favorites-slideshow/favorites-slideshow.component';
+import { PillsComponent } from './pills/pills.component';
+import { AlertNoFavoritesComponent } from './alert-no-favorites/alert-no-favorites.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { FavoritesSlideshowComponent } from './favorites-slideshow/favorites-sli
     TelevisionPosterGridComponent,
     SeasonsComponent,
     RecommendationSlideshowComponent,
-    FavoritesSlideshowComponent
+    FavoritesSlideshowComponent,
+    PillsComponent,
+    AlertNoFavoritesComponent,
   ],
   imports: [
     CommonModule,
@@ -47,7 +51,9 @@ import { FavoritesSlideshowComponent } from './favorites-slideshow/favorites-sli
     SeasonsComponent,
     RecommendationSlideshowComponent,
     SwiperModule,
-    FavoritesSlideshowComponent
+    FavoritesSlideshowComponent,
+    PillsComponent,
+    AlertNoFavoritesComponent,
 
   ]
 })

@@ -95,10 +95,19 @@ export class MovieService {
   }
 
   getTrendingMovie(): Observable<Movie[]> {
+
+    if (this.cargando) { return of([]); }
+
+    this.cargando = true;
+
     return this.http.get<SearchMovieResponse>(`${this.baseUrl}/trending/movie/week`, {
       params: this.params
     }).pipe(
       map( (resp: SearchMovieResponse) => resp.results),
+      tap( () => {
+        this.moviePage += 1;
+        this.cargando = false;
+      }),
       catchError( err => of(null))
     );
   }

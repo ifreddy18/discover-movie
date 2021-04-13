@@ -1,0 +1,33 @@
+<h1 class="mt-3 mb-3">Recommendations for you</h1>
+<hr>
+
+<app-pills (displayList)="displayList = $event"></app-pills>
+
+<!-- Movies -->
+<div *ngIf="randomMovies.length > 0 && displayList === 'movie'">
+
+    <div class="row" *ngFor="let movie of randomMovies">
+        <div class="col">
+            <h3 class="mt-4 mb-4">Because you liked {{ movie.title }}</h3>
+            <app-recommendation-slideshow [mediaType]="'movie'" [id]="movie.id"></app-recommendation-slideshow>
+        </div>
+    </div>
+
+</div>
+
+<app-alert-no-favorites [media]="'movie'" *ngIf="randomMovies.length <= 0 && displayList === 'movie'"></app-alert-no-favorites>
+
+<!-- TV -->
+<div *ngIf="randomTv.length > 0 && displayList === 'tv'">
+
+    <div class="row" *ngFor="let tv of randomTv">
+        <div class="col">
+            <h3 class="mt-4 mb-4">Because you liked {{ tv.name }}</h3>
+            <app-recommendation-slideshow [mediaType]="'tv'" [id]="tv.id"></app-recommendation-slideshow>
+        </div>
+    </div>
+
+</div>
+
+<app-alert-no-favorites [media]="'tv'" *ngIf="randomTv.length <= 0 && displayList === 'tv'"></app-alert-no-favorites>
+

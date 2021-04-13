@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col pills-container">
+        <span class="pill"
+              [ngClass]="{'active': showList === 'movie'}"
+              (click)="activeList('movie')">
+            Movies
+        </span>
+    </div>
+    <div class="col pills-container">
+        <span class="pill"
+              [ngClass]="{'active': showList === 'tv'}"
+              (click)="activeList('tv')">
+            TV Shows / Streaming
+        </span>
+    </div>
+</div>

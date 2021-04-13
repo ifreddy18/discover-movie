@@ -1,8 +1,8 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { CustomMoviesService } from '../../services/custom-movies.service';
 import { Television, Movie } from '../../interfaces/browser-response';
-import Swiper, { SwiperOptions } from 'swiper/bundle';
+import { CustomMoviesService } from '../../services/custom-movies.service';
 import { MovieService } from '../../services/movie.service';
+import Swiper, { SwiperOptions } from 'swiper/bundle';
 import SwiperCore, {
   Navigation,
   Pagination,
@@ -34,13 +34,9 @@ export class RecommendationSlideshowComponent implements OnInit {
     // Optional parameters
     slidesPerView: this.slidesPerView,
     autoplay: {
-      delay: 2500
+      delay: 3500
     },
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+
     // Scrollbar
     scrollbar: {
       el: '.swiper-scrollbar',
@@ -57,12 +53,10 @@ export class RecommendationSlideshowComponent implements OnInit {
 
     if (windowsWidth < 992){
       this.slidesPerView = 4.3;
-      return;
     }
 
     if (windowsWidth < 768){
       this.slidesPerView = 3.3;
-      return;
     }
 
   }
@@ -77,15 +71,14 @@ export class RecommendationSlideshowComponent implements OnInit {
     // tslint:disable-next-line: deprecation
     this.customMovieSevice.getRecommendation(this.mediaType, this.id).subscribe( resp => {
       this.recommendations = resp;
-      // console.log(this.recommendations);
     });
 
   }
 
   onSwiper(swiper): void {
-    // console.log(swiper);
     this.swiper = swiper;
   }
+
   onSlideChange(): void {
     // console.log('slide change');
   }

@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Custom Modules
 import { PagesModule } from './pages/pages.module';
 import { ComponentsModule } from './components/components.module';
-
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { ComponentsModule } from './components/components.module';
     AppRoutingModule,
     HttpClientModule,
     ComponentsModule,
-    PagesModule
+    PagesModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

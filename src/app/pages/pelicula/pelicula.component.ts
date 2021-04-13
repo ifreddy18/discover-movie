@@ -46,6 +46,7 @@ export class PeliculaComponent implements OnInit {
 
         this.cast = cast.filter( actor => actor.profile_path !== null);
 
+        console.log(movie);
     });
 
   }

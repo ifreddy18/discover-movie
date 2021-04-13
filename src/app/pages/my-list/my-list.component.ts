@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomMoviesService } from '../../services/custom-movies.service';
-import { Television, Movie, MediaType } from '../../interfaces/browser-response';
-import { interval } from 'rxjs';
+import { Television, Movie  } from '../../interfaces/browser-response';
 
 @Component({
   selector: 'app-my-list',
@@ -13,8 +12,7 @@ export class MyListComponent implements OnInit {
   likesMovies: Movie[] = [];
   likesTelevision: Television[] = [];
 
-  randomMovies: Movie[] = [];
-  randomTv: Television[] = [];
+  displayList: string;
 
   constructor(private customMovieSevice: CustomMoviesService) {
     this.likesMovies = this.customMovieSevice.likesMovies;
@@ -22,33 +20,10 @@ export class MyListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setRandoms(this.likesMovies, this.randomMovies);
-    this.setRandoms(this.likesTelevision, this.randomTv);
-  }
-
-  setRandoms(likeMedia: Movie[] | Television[], randomMedia: Movie[] | Television[]): void {
-    // debugger
-    let max = likeMedia.length;
-    let item;
-
-    if (likeMedia.length > 3) { max = 3; }
-
-    while (randomMedia.length < max) {
-      item = this.getRandomItems(likeMedia);
-
-      // if (!this.randomMedia.some( tv => tv.id === item.id)){
-      if (!randomMedia.includes(item)){
-        randomMedia.push(item);
-      }
-      console.log(randomMedia);
-    }
 
   }
 
-  getRandomItems(array: Array<any>): any {
-    return array[Math.floor(Math.random() * array.length)];
-  }
-
+ 
 
 
 }

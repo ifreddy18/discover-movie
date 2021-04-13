@@ -1,73 +1,23 @@
-<div class="row">
-    <div class="col">
-        
-        <h1 class="mt-3 mb-3">Recommendations for you</h1>
+<h1 class="mt-3 mb-3">Favorites</h1>
+<hr>
 
-        <!-- Recommendations -->
+<app-pills (displayList)="displayList = $event"></app-pills>
 
-        <div *ngIf="randomMovies.length > 0">
+<!-- Movies -->
 
-            <h2 class="mt-3 mb-1">Movies</h2>
+<app-peliculas-poster-grid [movies]="likesMovies" 
+                           *ngIf="likesMovies.length > 0 && displayList === 'movie' ">
+</app-peliculas-poster-grid>
 
-            <div class="row" *ngFor="let movie of randomMovies">
-                <div class="col">
-                    <h3 class="mt-4 mb-4">Because you liked {{ movie.title }}</h3>
-                    <app-recommendation-slideshow [mediaType]="'movie'" [id]="movie.id"></app-recommendation-slideshow>
-                </div>
-            </div>
+<app-alert-no-favorites [media]="'movie'" *ngIf="likesMovies.length <= 0 && displayList === 'movie'"></app-alert-no-favorites>
 
-        </div>
+<!-- TV -->
 
-        <div *ngIf="randomTv.length > 0">
+<app-television-poster-grid [television]="likesTelevision"
+                            *ngIf="likesTelevision.length > 0 && displayList === 'tv'">
+</app-television-poster-grid>
 
-            <h2 class="mt-3 mb-1">Television / Streaming</h2>
-
-            <div class="row" *ngFor="let tv of randomTv">
-                <div class="col">
-                    <h3 class="mt-4 mb-4">Because you liked {{ tv.name }}</h3>
-                    <app-recommendation-slideshow [mediaType]="'tv'" [id]="tv.id"></app-recommendation-slideshow>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Favorites  -->
-
-        <h2 class="mt-4 mb-4">All the movies you liked</h2>
-
-        <div class="row" *ngIf="likesMovies.length > 0">
-            <div class="col">
-                <app-favorites-slideshow [mediaType]="'movie'" [mediaArray]="likesMovies"></app-favorites-slideshow>
-            </div>
-        </div>
-
-        <div class="row" *ngIf="likesMovies.length <= 0">
-            <div class="col">
-                <div class="alert alert-info text-center" role="alert">
-                    <i class="fas fa-exclamation fa-4x"></i>
-                    <h4 class="alert-heading text-center">You don't have any movie in your lists yet!</h4>
-                </div>
-            </div>
-        </div> 
+<app-alert-no-favorites [media]="'tv'" *ngIf="likesTelevision.length <= 0 && displayList === 'tv'"></app-alert-no-favorites>
 
 
-        <h2 class="mt-3 mb-3">All the shows you liked</h2>
 
-        <div class="row" *ngIf="likesTelevision.length > 0">
-            <div class="col">
-                <app-favorites-slideshow [mediaType]="'tv'" [mediaArray]="likesTelevision"></app-favorites-slideshow>
-            </div>
-        </div>
-
-        <div class="row" *ngIf="likesTelevision.length <= 0">
-            <div class="col">
-                <div class="alert alert-info text-center" role="alert">
-                    <i class="fas fa-exclamation fa-4x"></i>
-                    <h4 class="alert-heading text-center">You don't have any show in your lists yet!</h4>
-                </div>
-            </div>
-        </div>  
-        
-
-    </div>
-</div>

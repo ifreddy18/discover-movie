@@ -1,0 +1,18 @@
+/* .star-rating {
+    transform: translateX(-140px);
+}
+
+@media (max-width: 992px) { 
+    .star-rating {
+        padding-right: 0 !important;
+        transform: translateX(-70px);
+    }
+} */
+
+@media (max-width: 767px) {
+    .img-thumbnail {
+        max-height: 400px;
+        margin-bottom: 30px;
+    }
+}
+

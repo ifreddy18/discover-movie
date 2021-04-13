@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Movie, Television } from 'src/app/interfaces/browser-response';
 import { MovieService } from '../../services/movie.service';
 import { combineLatest } from 'rxjs';
@@ -8,11 +8,38 @@ import { combineLatest } from 'rxjs';
   templateUrl: './trending.component.html',
   styleUrls: ['./trending.component.css']
 })
-export class TrendingComponent implements OnInit {
+export class TrendingComponent implements OnInit, OnDestroy {
 
   movies: Movie[];
   television: Television[];
+  displayList: string;
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(): void{
+    const pos = (document.documentElement.scrollTop || document.body.scrollTop) + 1200;
+    const max = (document.documentElement.scrollHeight || document.body.scrollHeight);
+
+    if (pos > max){
+
+      if (this.movieService.cargando) { return; }
+
+      if (this.displayList === 'movie') {
+        this.movieService.getTrendingMovie().subscribe( resp => {
+          this.movies.push(...resp);
+        });
+      }
+
+      if (this.displayList === 'tv') {
+        this.movieService.getTrendingTelevision().subscribe( resp => {
+          this.television.push(...resp);
+        });
+      }
+
+
+
+    }
+
+  }
 
   constructor(private movieService: MovieService) { }
 
@@ -32,5 +59,11 @@ export class TrendingComponent implements OnInit {
     });
 
   }
+
+  ngOnDestroy(): void {
+    this.movieService.resetMoviePages();
+  }
+
+
 
 }

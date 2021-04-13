@@ -35,12 +35,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // tslint:disable-next-line: deprecation
     this.movieService.getNowPlaying().subscribe( resp => {
+
       this.movies = resp;
       this.moviesSlideShow = resp;
 
-      // PRevio a clase 257
-      // this.movies = resp.results;
-      // this.moviesSlideShow = resp.results;
     });
   }
 

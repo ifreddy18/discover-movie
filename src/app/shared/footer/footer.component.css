@@ -1,0 +1,14 @@
+.row {
+    /* width: 100vw; */
+    border-top: 1px solid #7B87B8;
+}
+
+.footer {
+    padding: 20px;
+    color: #7B87B8;
+    text-align: center;
+}
+
+.footer > span {
+    /* text-ali; */
+}

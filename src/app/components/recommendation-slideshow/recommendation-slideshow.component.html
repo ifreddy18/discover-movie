@@ -1,6 +1,5 @@
 <div class="swiper">
 
-    <!-- Television -->
     <swiper [slidesPerView]="slidesPerView"
             [spaceBetween]="15"
             (swiper)="onSwiper($event)"
@@ -29,29 +28,6 @@
         </ng-template>
         
     </swiper>
-
-    <!-- Movie -->
-    <!-- <swiper [slidesPerView]="slidesPerView"
-            [spaceBetween]="15"
-            (swiper)="onSwiper($event)"
-            (slideChange)="onSlideChange()"
-            [pagination]="{ clickable: true }"
-            [scrollbar]="swiperParams.scrollbar"
-            [autoplay]="swiperParams.autoplay"
-            [loop]="true"
-            *ngIf="mediaType === 'movie'">
-
-        <ng-template swiperSlide *ngFor="let movie of recommendations">
-            <img class="img-thumbnail" 
-                 [src]="movie.poster_path | poster:200" 
-                 [alt]="movie.title"
-                 (click)="onMovieClick(movie)">
-            
-            <h4 class="mt-2">{{ movie.title }}</h4>
-
-        </ng-template>
-        
-    </swiper> -->
 
     <span class="button-prev" (click)="slidePrev()">
         <i class="fas fa-chevron-left"></i>

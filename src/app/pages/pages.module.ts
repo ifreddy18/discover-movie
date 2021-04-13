@@ -17,6 +17,8 @@ import { PipesModule } from '../pipes/pipes.module';
 import { RatingModule } from 'ng-starrating';
 import { AdvancedBrowserComponent } from './advanced-browser/advanced-browser.component';
 import { TelevisionComponent } from './television/television.component';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,14 @@ import { TelevisionComponent } from './television/television.component';
     TrendingComponent,
     MyListComponent,
     AdvancedBrowserComponent,
-    TelevisionComponent],
+    TelevisionComponent,
+    RecommendationsComponent],
   imports: [
     CommonModule,
     ComponentsModule,
     PipesModule,
-    RatingModule
+    RatingModule,
+    SharedModule
   ]
 })
 export class PagesModule { }

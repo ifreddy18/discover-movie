@@ -1,20 +1,29 @@
-<div class="swiper-container">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
-      <!-- Slides -->
-      <div class="swiper-slide text-white text-center"
-            *ngFor="let actor of cast">
+<div class="swiper">
+	<swiper [slidesPerView]="slidesPerView"
+			[spaceBetween]="15"
+			(swiper)="onSwiper($event)"
+			(slideChange)="onSlideChange()"
+			[pagination]="{ clickable: true }"
+			[scrollbar]="swiperParams.scrollbar"
+			[autoplay]="swiperParams.autoplay"
+			[loop]="true">
 
-            <img class="img-thumbnail" [src]="actor.profile_path | poster" [alt]="actor.name">
-        
-            {{ actor.name }}
-      </div>
-    </div>
+		<ng-template swiperSlide *ngFor="let actor of cast">
+			
+			<img class="img-thumbnail" [src]="actor.profile_path | poster" [alt]="actor.name">
+		
+			<h4 class="mt-2">{{ actor.name }}</h4>
 
-    <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+		</ng-template>
+		
+	</swiper>
 
-    <!-- If we need scrollbar -->
-    <div class="swiper-scrollbar"></div>
+	<span class="button-prev" (click)="slidePrev()">
+		<i class="fas fa-chevron-left"></i>
+	</span>
+	<span class="button-next" (click)="slideNext()">
+		<i class="fas fa-chevron-right"></i>
+	</span>
+
 </div>
+  
