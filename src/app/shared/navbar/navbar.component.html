@@ -21,6 +21,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/recommendations">Recommendations</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile">Profile</a>
+        </li>
       </ul>
 
       <div class="d-flex">
@@ -30,13 +33,27 @@
               placeholder="Quick search" 
               aria-label="Search"
               (keyup.enter)="buscarPelicula(txtBuscar.value)">
-        <button class="btn btn-outline-success" 
+        <!-- <button class="btn btn-outline-success" 
                 type="submit"
                 (click)="buscarPelicula(txtBuscar.value)">
                 Search
-        </button>
+        </button> -->
+
+        
       </div>
       
+      <button *ngIf="!authService.userActive" 
+                class="btn btn-outline-info"
+                (click)="signIn()">
+                Sign In
+        </button>
+        <button *ngIf="authService.userActive" 
+                class="btn btn-outline-danger" 
+                (click)="logout()">
+                Logout
+        </button>
+
+
     </div>
   </div>
 </nav>

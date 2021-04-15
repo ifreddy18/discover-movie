@@ -19,6 +19,7 @@ import { AdvancedBrowserComponent } from './advanced-browser/advanced-browser.co
 import { TelevisionComponent } from './television/television.component';
 import { RecommendationsComponent } from './recommendations/recommendations.component';
 import { SharedModule } from '../shared/shared.module';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SharedModule } from '../shared/shared.module';
     MyListComponent,
     AdvancedBrowserComponent,
     TelevisionComponent,
-    RecommendationsComponent],
+    RecommendationsComponent,
+    UserProfileComponent],
   imports: [
     CommonModule,
     ComponentsModule,

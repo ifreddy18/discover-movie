@@ -1,0 +1,34 @@
+<h1>Profile</h1>
+<hr>
+
+<div class="row">
+    <div class="col" *ngIf="authService.userActive && authService.currentUser;">
+
+        <h2>Hi {{ authService.userDisplayName }}</h2>
+        <img [src]="authService.userPhoto" [alt]="authService.userDisplayName" width="50">
+
+
+        <button class="btn btn-outline-danger"
+                (click)="logout()">
+            Logout
+        </button>
+    
+    </div>
+
+    <div class="col" *ngIf="!authService.userActive;">
+
+        <h2>Hi Guest</h2>
+        <!-- <img [src]="currentUser.photoURL" [alt]="currentUser.displayName" width="50"> -->
+
+
+        <button class="btn btn-outline-info"
+                (click)="login()">
+            Sign In
+        </button>
+    
+    </div>
+
+
+</div>
+
+

@@ -34,10 +34,11 @@
       "rxjs/Rx"
     ],
     "import-spacing": true,
-    "indent": {
+    "indent": { 
       "options": [
-        "spaces"
-      ]
+        "tabs",
+        4
+      ] 
     },
     "max-classes-per-file": false,
     "max-line-length": [

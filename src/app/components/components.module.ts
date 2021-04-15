@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { RatingModule } from 'ng-starrating';
 
 // Components
-import { NavbarComponent } from './navbar/navbar.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { CastSlideshowComponent } from './cast-slideshow/cast-slideshow.component';
 import { PeliculasPosterGridComponent } from './peliculas-poster-grid/peliculas-poster-grid.component';
@@ -24,7 +23,6 @@ import { AlertNoFavoritesComponent } from './alert-no-favorites/alert-no-favorit
 
 @NgModule({
   declarations: [
-    NavbarComponent,
     SlideshowComponent,
     PeliculasPosterGridComponent,
     CastSlideshowComponent,
@@ -43,7 +41,6 @@ import { AlertNoFavoritesComponent } from './alert-no-favorites/alert-no-favorit
     SwiperModule
   ],
   exports: [
-    NavbarComponent,
     SlideshowComponent,
     PeliculasPosterGridComponent,
     CastSlideshowComponent,

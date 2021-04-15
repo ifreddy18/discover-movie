@@ -5,14 +5,21 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
+
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 // Custom Modules
 import { PagesModule } from './pages/pages.module';
 import { ComponentsModule } from './components/components.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +27,11 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     ComponentsModule,
     PagesModule,
-    SharedModule
+    SharedModule,
+    AuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

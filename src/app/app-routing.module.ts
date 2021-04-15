@@ -8,6 +8,8 @@ import { MyListComponent } from './pages/my-list/my-list.component';
 import { TelevisionComponent } from './pages/television/television.component';
 import { AdvancedBrowserComponent } from './pages/advanced-browser/advanced-browser.component';
 import { RecommendationsComponent } from './pages/recommendations/recommendations.component';
+import { LoginComponent } from './auth/login/login.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -19,6 +21,8 @@ const routes: Routes = [
   {path: 'tv/:id', component: TelevisionComponent},
   {path: 'search/:texto', component: BuscarComponent},
   {path: 'search', component: AdvancedBrowserComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'profile', component: UserProfileComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 
