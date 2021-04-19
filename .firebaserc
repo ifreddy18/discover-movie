@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "discover-movie-53176": {
+      "hosting": {
+        "peliculasApp": [
+          "discover-movie-53176"
+        ]
+      }
+    }
+  }
+}

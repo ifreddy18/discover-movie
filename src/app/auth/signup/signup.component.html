@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col text-center">
+
+        <h2>Sign up</h2>
+
+        <hr class="hr-login mt-3 mb-3">
+        
+        <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+            {{ errorMsg }}
+        </div>
+
+        <form class="" 
+              #forma="ngForm" 
+              (submit)="signupEmail(forma)">
+            
+            <fieldset>
+                <div class="form-floating mt-2 mb-2">
+                    <input class="form-control" 
+                           type="text"  
+                           id="floatingName" 
+                           placeholder="Name"
+                           [(ngModel)]="name"
+                           [ngClass]="{'is-invalid': inputName.invalid && inputName.touched}"
+                           name="name"
+                           #inputName="ngModel"
+                           minlength="4"
+                           required>
+                    <label for="floatingName">Name</label>
+                </div>
+                <div class="form-floating mt-2 mb-2">
+                    <input class="form-control" 
+                           type="email"  
+                           id="floatingEmail" 
+                           placeholder="Email"
+                           [(ngModel)]="email"
+                           [ngClass]="{'is-invalid': inputEmail.invalid && inputEmail.touched}"
+                           name="email"
+                           #inputEmail="ngModel"
+                           minlength="6"
+                           required>
+                    <label for="floatingEmail">Email</label>
+                </div>
+                <div class="form-floating mt-2 mb-2">
+                    <input class="form-control" 
+                           type="password"  
+                           id="floatingPassword" 
+                           placeholder="password"
+                           [(ngModel)]="password"
+                           [ngClass]="{'is-invalid': inputPassword.invalid && inputPassword.touched}"
+                           name="password"
+                           #inputPassword="ngModel"
+                           minlength="8"
+                           required>
+                    <label for="floatingPassword">Password</label>
+                </div>
+            </fieldset>
+
+            <button type="submit"
+                    class="btn btn-primary m-2">
+                Sign up with email
+            </button>
+
+        </form>
+
+        <a class="nav-link" routerLink="/login">
+            Have an account? Log in
+        </a>
+
+
+
+        <hr class="hr-login mt-3 mb-3">
+
+        <button type="button"
+                class="btn btn-danger m-2"
+                (click)="loginGoogle()">
+                Sign up with Google
+        </button>
+
+        
+    </div>
+</div>
+

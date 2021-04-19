@@ -1,0 +1,43 @@
+.navbar-brand {
+    font-size: 24px;
+    font-weight: 200;
+    color: #bd4c5f !important;
+}
+
+.nav-link {
+    color: #7B87B8 !important;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+.nav-link:hover {
+    color: #bd4c5f !important;
+}
+
+.dropdown-item.text-danger {
+    cursor: pointer;
+}
+
+.dropdown-item.text-info {
+    cursor: pointer;
+}
+
+.nav-item.profile-list-item,
+.list-divider {
+    display: none;
+}
+
+@media(max-width: 767px){
+    .profile-dropdown {
+        display: none;
+    }
+
+    .nav-item.profile-list-item,
+    .list-divider {
+        display: block;
+    }
+
+    .nav-link {
+        padding-left: 40px;
+    }
+}

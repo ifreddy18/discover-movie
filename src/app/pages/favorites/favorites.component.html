@@ -1,0 +1,30 @@
+<h1 class="mt-3 mb-3" *ngIf="authService.userFirstName"> 
+    {{authService.userFirstName}}'s favorites
+</h1>
+
+<h1 class="mt-3 mb-3" *ngIf="!authService.userFirstName">
+    Guest's favorites
+</h1>
+
+<hr>
+
+<app-pills (displayList)="displayList = $event"></app-pills>
+
+<!-- Movies -->
+
+<app-peliculas-poster-grid [movies]="customMovieSevice.likesMovies" 
+                           *ngIf="customMovieSevice.likesMovies.length > 0 && displayList === 'movie' ">
+</app-peliculas-poster-grid>
+
+<app-alert-no-favorites [media]="'movie'" *ngIf="customMovieSevice.likesMovies.length <= 0 && displayList === 'movie'"></app-alert-no-favorites>
+
+<!-- TV -->
+
+<app-television-poster-grid [television]="customMovieSevice.likesTelevision"
+                            *ngIf="customMovieSevice.likesTelevision.length > 0 && displayList === 'tv'">
+</app-television-poster-grid>
+
+<app-alert-no-favorites [media]="'tv'" *ngIf="customMovieSevice.likesTelevision.length <= 0 && displayList === 'tv'"></app-alert-no-favorites>
+
+
+

@@ -17,7 +17,7 @@
             </span>
 
             <i class="fas fa-heart fa-2x"
-                [ngClass]="{ 'like': likesTelevisionId.includes(tv.id)}"
+                [ngClass]="{ 'like': customMovieService.likesTelevisionId.includes(tv.id)}"
                 (click)="toFavoritesTelevision(tv)"></i>
 
             <img [src]="tv.poster_path | poster"

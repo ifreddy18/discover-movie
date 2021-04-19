@@ -1,0 +1,19 @@
+h2 , fieldset, form{
+    max-width: 465px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+h2 {
+    text-align: start !important;
+}
+
+.btn {
+    width: 200px;
+    padding: 10px;
+}
+
+.hr-login {
+    max-width: 500px;
+    margin: 0px auto;
+}

@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col text-center">
+
+        <h2>Login</h2>
+
+        <hr class="hr-login mt-3 mb-3">
+
+        <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+            {{ errorMsg }}
+        </div>
+
+        <form class="" 
+              #forma="ngForm" 
+              (submit)="loginEmail(forma)">
+            
+            <fieldset>
+                <div class="form-floating mt-2 mb-2">
+                    <input class="form-control" 
+                           type="email"  
+                           id="floatingEmail" 
+                           placeholder="Email"
+                           [(ngModel)]="email"
+                           [ngClass]="{'is-invalid': inputEmail.invalid && inputEmail.touched}"
+                           name="email"
+                           #inputEmail="ngModel"
+                           minlength="6"
+                           required>
+                    <label for="floatingEmail">Email</label>
+                </div>
+                <div class="form-floating mt-2 mb-2">
+                    <input class="form-control" 
+                           type="password"  
+                           id="floatingPassword" 
+                           placeholder="password"
+                           [(ngModel)]="password"
+                           [ngClass]="{'is-invalid': inputPassword.invalid && inputPassword.touched}"
+                           name="password"
+                           #inputPassword="ngModel"
+                           minlength="6"
+                           required>
+                    <label for="floatingPassword">Password</label>
+                </div>
+            </fieldset>
+
+            <button type="submit"
+                    class="btn btn-primary m-2">
+                Login with email
+            </button>
+
+        </form>
+
+        <a class="nav-link" href="">
+            Forgot password?
+        </a>
+
+        <a class="nav-link" routerLink="/signup">
+            Don't have an account yet? Sign up
+        </a>
+
+        <hr class="hr-login mt-3 mb-3">
+
+        <button type="button"
+                class="btn btn-danger m-2"
+                (click)="loginGoogle()">
+                Login with Google
+        </button>   
+
+        
+
+        
+    </div>
+</div>
+
+
+
+
