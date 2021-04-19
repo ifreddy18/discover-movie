@@ -65,8 +65,8 @@
                 </button>
 
                 <button class="btn btn-outline-danger m-2"
-                        [ngClass]="{'active': inFavorite}" 
-                        (click)="toFavorite(movie)">
+                        [ngClass]="{'active': customMovieService.likesMoviesId.includes(movie.id)}" 
+                        (click)="toFavoritesMovies(movie)">
                     <i class="fas fa-heart"></i>
                 </button>
             </div>

@@ -5,33 +5,34 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-	selector: 'app-login',
-	templateUrl: './login.component.html',
-	styleUrls: ['./login.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class LoginComponent {
+export class SignupComponent {
 
-	email: string;
+	name: string;
+  	email: string;
 	password: string;
 	errorMsg: string;
 
 	constructor(
+		// public auth: AngularFireAuth,
 		public authService: AuthService,
 		public router: Router
 	) { }
 
-	async loginEmail(form: NgForm): Promise<void> {
+	async signupEmail(form: NgForm): Promise<void> {
 
 		Object.values( form.controls ).forEach( control => {
 			control.markAsTouched();
 		});
 
 		if (form.valid) {
+			const signUpReturn = await this.authService.signupEmail(this.name, this.email, this.password);
 
-			const loginEmailReturn = await this.authService.loginEmail(this.email, this.password);
-
-			if (loginEmailReturn.length > 0) {
-				this.errorMsg = loginEmailReturn;
+			if (signUpReturn.length > 0) {
+				this.errorMsg = signUpReturn;
 			}
 
 		}
@@ -40,10 +41,6 @@ export class LoginComponent {
 
 	loginGoogle(): void {
 		this.authService.loginGoogle();
-	}
-
-	signUp(): void {
-		this.router.navigateByUrl('signup');
 	}
 
 

@@ -1,12 +1,11 @@
 
 export interface Usuario {
 
-	displayName: string;
-	email: string;
-	phoneNumber: string;
-	photoURL: string;
-	providerId: string;
-	uid: string;
+	displayName?: string;
+	email?: string;
+	phoneNumber?: string;
+	photoURL?: string;
+	uid?: string;
 
 }
 

@@ -2,33 +2,106 @@
 <hr>
 
 <div class="row">
+
+    <!-- <div class="col"> -->
     <div class="col" *ngIf="authService.userActive && authService.currentUser;">
 
-        <h2>Hi {{ authService.userDisplayName }}</h2>
-        <img [src]="authService.userPhoto" [alt]="authService.userDisplayName" width="50">
 
+        <h2>
+            Welcome <span *ngIf="authService.userFirstName">{{ authService.userFirstName}}</span>
+        </h2>
+        
+        <div class="img-container text-center m-3">
+            <img class="rounded-circle"
+                 width="96"
+                 [src]="authService.userPhoto | profileImg" 
+                 [alt]="authService.userDisplayName">
 
-        <button class="btn btn-outline-danger"
-                (click)="logout()">
-            Logout
-        </button>
-    
+        </div>
+
+        <form class="" #form="ngForm">
+            <fieldset disabled>
+                <div class="form-floating mt-2 mb-2">
+                    <input class="form-control"
+                           type="text" 
+                           id="floatingName" 
+                           placeholder="Name"
+                           [(ngModel)]="authService.userDisplayName"
+                           name="name">
+                    <label for="floatingName">Name</label>
+                </div>
+                <div class="form-floating mt-2 mb-2">
+                    <input class="form-control" 
+                           type="email"  
+                           id="floatingEmail" 
+                           placeholder="Email"
+                           [(ngModel)]="authService.userEmail"
+                           name="email">
+                    <label for="floatingEmail">Email</label>
+                </div>
+            </fieldset>
+        </form>
+
+        <div class="btn-container mt-4">
+            <a class="btn btn-outline-danger m-2" (click)="logout()">
+                Logout
+            </a>
+        </div>
+
     </div>
 
     <div class="col" *ngIf="!authService.userActive;">
+    <!-- <div class="col" *ngIf="authService.userActive;"> -->
 
-        <h2>Hi Guest</h2>
+
+        <h2>Hi! Welcome to the Guest Mode</h2>
+        <p class="mt-4 mb-4">
+            This is an example of what you are going to see in this page
+        </p>
         <!-- <img [src]="currentUser.photoURL" [alt]="currentUser.displayName" width="50"> -->
 
+        <form class="" #formGuest="ngForm">
+            <fieldset disabled>
+                <div class="form-floating mt-2 mb-2">
+                    <input class="form-control"
+                           type="text" 
+                           id="floatingName" 
+                           placeholder="Name"
+                           [(ngModel)]="guestInfo.displayName"
+                           name="name">
+                    <label for="floatingName">Name</label>
+                </div>
+                <div class="form-floating mt-2 mb-2">
+                    <input class="form-control" 
+                           type="email"  
+                           id="floatingEmail" 
+                           placeholder="Email"
+                           [(ngModel)]="guestInfo.email"
+                           name="email">
+                    <label for="floatingEmail">Email</label>
+                </div>
+            </fieldset>
+        </form>
 
-        <button class="btn btn-outline-info"
-                (click)="login()">
-            Sign In
-        </button>
-    
+        <p class="mt-4 mb-4">
+            To get custom recommendations and use our services on any device, you must log in.
+        </p>
+        
+
+
+        <div class="btn-container mt-4">
+            <a class="btn btn-outline-info m-2" routerLink="/signup">
+                Sign Up
+            </a>
+            <a class="btn btn-outline-info m-2" routerLink="/login">
+                Login
+            </a>
+        </div>
+        
+
     </div>
+
+    <!-- <app-login></app-login> -->
 
 
 </div>
-
-
