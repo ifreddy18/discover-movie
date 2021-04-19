@@ -38,8 +38,12 @@ export class LoginComponent {
 
 	}
 
-	loginGoogle(): void {
-		this.authService.loginGoogle();
+	async loginGoogle(): Promise<void> {
+		const loginGoogleReturn = await this.authService.loginGoogle();
+
+		if (loginGoogleReturn.length > 0) {
+			this.errorMsg = loginGoogleReturn;
+		}
 	}
 
 	signUp(): void {

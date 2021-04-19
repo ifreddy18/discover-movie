@@ -78,26 +78,26 @@ export class AuthService {
 					this.userActive = true;
 					this.router.navigateByUrl('');
 				})
-				.catch( error => {
-					errorMsg = error.message;
-				});
+				.catch( error => errorMsg = error.message );
 
 		return errorMsg;
 
 	}
 
-	loginGoogle(): void {
+	async loginGoogle(): Promise<string> {
+
+		let errorMsg = '';
+
 		this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
 			.then( result => {
 				this.setCurrentUserByGoogle(result);
+				this.dbService.createUser(this.currentUser);
+				this.router.navigateByUrl('');
 			})
-			.catch( error => console.warn({ error }))
-			.finally( () => {
-				if (this.currentUser) {
-					this.dbService.createUser(this.currentUser);
-					this.router.navigateByUrl('');
-				}
-			});
+			.catch( error => errorMsg = error.message );
+
+		return errorMsg;
+
 	}
 
   	logout(): void {
