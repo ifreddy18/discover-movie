@@ -36,7 +36,7 @@ export class TelevisionComponent implements OnInit {
 		).subscribe(([television]) => {
 
 			if (!television) {
-				this.router.navigateByUrl('/home');
+				this.router.navigateByUrl('');
 				return;
 			}
 

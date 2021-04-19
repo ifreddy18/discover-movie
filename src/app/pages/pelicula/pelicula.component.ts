@@ -38,7 +38,7 @@ export class PeliculaComponent implements OnInit {
 		).subscribe(([movie, cast]) => {
 
 			if (!movie) {
-				this.router.navigateByUrl('/home');
+				this.router.navigateByUrl('');
 				return;
 			}
 

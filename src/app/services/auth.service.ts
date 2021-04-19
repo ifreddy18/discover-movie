@@ -66,7 +66,7 @@ export class AuthService {
 			.finally( () => {
 				if (this.currentUser) {
 					this.dbService.createUser(this.currentUser);
-					this.router.navigateByUrl('/home');
+					this.router.navigateByUrl('');
 				}
 			});
 
@@ -81,7 +81,7 @@ export class AuthService {
 		await this.afAuth.signInWithEmailAndPassword(email, password)
 				.then( result => {
 					this.userActive = true;
-					this.router.navigateByUrl('/home');
+					this.router.navigateByUrl('');
 				})
 				.catch( error => {
 					errorMsg = error.message;
@@ -100,7 +100,7 @@ export class AuthService {
 			.finally( () => {
 				if (this.currentUser) {
 					this.dbService.createUser(this.currentUser);
-					this.router.navigateByUrl('/home');
+					this.router.navigateByUrl('');
 				}
 			});
 	}
@@ -110,7 +110,7 @@ export class AuthService {
 			.then(() => {
 				this.userActive = false;
 				this.currentUser = { };
-				this.router.navigateByUrl('home');
+				this.router.navigateByUrl('');
 			})
 			.catch((error) => {
 				console.warn({ error });
