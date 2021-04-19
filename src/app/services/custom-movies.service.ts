@@ -1,7 +1,7 @@
-import { Injectable, OnDestroy, Pipe } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { of, Observable, combineLatest } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Movie, SearchMovieResponse, Television } from '../interfaces/browser-response';
 import { AuthService } from './auth.service';
@@ -10,7 +10,7 @@ import { DatabaseService } from './database.service';
 @Injectable({
 	providedIn: 'root'
 })
-export class CustomMoviesService implements OnDestroy {
+export class CustomMoviesService {
 
 	private baseUrl = 'https://api.themoviedb.org/3';
 	likesMovies: Movie[] = [];
@@ -25,10 +25,6 @@ export class CustomMoviesService implements OnDestroy {
 		private dbService: DatabaseService,
 	) {
 		this.userStateChange();
-	}
-
-	ngOnDestroy(): void {
-
 	}
 
 	get params(): Params {

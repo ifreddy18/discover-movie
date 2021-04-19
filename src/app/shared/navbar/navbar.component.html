@@ -29,9 +29,6 @@
 				<li class="nav-item profile-list-item">
 					<a class="nav-link" routerLink="/profile">My profile</a>
 				</li>
-				<li class="nav-item profile-list-item">
-					<a class="nav-link" routerLink="/favorites">Favorites</a>
-				</li>
 				<li class="nav-item profile-list-item" *ngIf="!authService.userActive">
 					<a class="nav-link text-info" routerLink="/login">
 						Sign up | Login
@@ -48,6 +45,8 @@
 				<input #txtBuscar class="form-control me-2" type="search" placeholder="Quick search" aria-label="Search"
 					(keyup.enter)="buscarPelicula(txtBuscar.value)">
 			</div>
+
+			<hr class="list-divider">
 
 			<!-- Dropdown Profile -->
 			<div class="btn-group profile-dropdown">

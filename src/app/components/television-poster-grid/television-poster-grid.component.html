@@ -1,40 +1,39 @@
-<div class="row">
-    <div class="col-md-3 text-center mb-5" *ngFor="let tv of television">
-
+<div class="row justify-content-between">
+    <div class="col-6 col-sm-4 col-md-3 text-center mt-2" *ngFor="let tv of television">
 
         <div class="img-container">
             
-            <span class="vote-average"> 
-                <i class="fas fa-star"></i> 
-                <h5>
+            <div class="vote-container"> 
+                <i class="fas fa-star"></i>
+                <span class="vote-average">
                     {{ tv.vote_average | number:'1.1-2' }} / 10
-                </h5>
-            </span>
+                </span>
+            </div>
           
-            <span class="btn movie-detail"
-                (click)="onTelevisionClick(tv)">
-                View Details
-            </span>
+            <div class="movie-detail">
+                <span class="btn" (click)="onTelevisionClick(tv)">
+                    View Details
+                </span>
+            </div>
 
-            <i class="fas fa-heart fa-2x"
-                [ngClass]="{ 'like': customMovieService.likesTelevisionId.includes(tv.id)}"
-                (click)="toFavoritesTelevision(tv)"></i>
+            <div class="fav-container">
+                <i class="fas fa-heart fa-2x"
+                    [ngClass]="{ 'like': customMovieService.likesTelevisionId.includes(tv.id)}"
+                    (click)="toFavoritesTelevision(tv)">
+                </i>
+            </div>
 
             <img [src]="tv.poster_path | poster"
                 class="img-fluid poster"
-                (click)="onTelevisionClick(tv)"
-                style="cursor: pointer; margin-top: -100px;">
+                (click)="onTelevisionClick(tv)">
         
         </div>
 
         <div>
-            <h4 style="font-size: 18px; margin-top: 10px; margin-bottom: 0px;">
-                {{tv.name}}
+            <h4 class="movie-title mb-2">
+                {{ tv.name }}
             </h4>
         </div>
-        
-
-
 
     </div>
 </div>

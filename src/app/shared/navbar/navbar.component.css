@@ -40,4 +40,13 @@
     .nav-link {
         padding-left: 40px;
     }
+
+    .nav-link.text-info {
+        color: #0dcaf0 !important;
+    }
+
+    .nav-link.text-danger {
+        color: #dc3545 !important;
+    }
+
 }

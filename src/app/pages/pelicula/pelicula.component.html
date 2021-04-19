@@ -76,7 +76,7 @@
 
 </div>
 
-<h3 class="mt-5 mb-3">Cast</h3>
+<h3 class="mt-5 mb-3" *ngIf="cast.length > 0">Cast</h3>
 <div class="row mt-4" *ngIf="cast.length > 0">
     <div class="col">
         <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
