@@ -17,7 +17,6 @@ export class SignupComponent {
 	errorMsg: string;
 
 	constructor(
-		// public auth: AngularFireAuth,
 		public authService: AuthService,
 		public router: Router
 	) { }
@@ -39,8 +38,12 @@ export class SignupComponent {
 
 	}
 
-	loginGoogle(): void {
-		this.authService.loginGoogle();
+	async loginGoogle(): Promise<void> {
+		const loginGoogleReturn = await this.authService.loginGoogle();
+
+		if (loginGoogleReturn.length > 0) {
+			this.errorMsg = loginGoogleReturn;
+		}
 	}
 
 

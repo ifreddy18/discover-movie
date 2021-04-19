@@ -1,43 +1,42 @@
-<div class="row">
-    <div class="col-md-3 text-center" *ngFor="let movie of movies">
-
+<div class="row justify-content-between">
+    <div class="col-6 col-sm-4 col-md-3 text-center mt-2" *ngFor="let movie of movies">
 
         <div class="img-container">
             
-            <span class="vote-average"> 
-                <i class="fas fa-star"></i> 
-                <h5>
+            <div class="vote-container"> 
+                <i class="fas fa-star"></i>
+                <span class="vote-average">
                     {{ movie.vote_average | number:'1.1-2' }} / 10
-                </h5>
-            </span>
+                </span>
+            </div>
           
-            <span class="btn movie-detail"
-                (click)="onMovieClick(movie)">
-                View Details
-            </span>
+            <div class="movie-detail">
+                <span class="btn" (click)="onMovieClick(movie)">
+                    View Details
+                </span>
+            </div>
 
-            <i class="fas fa-heart fa-2x"
-                [ngClass]="{ 'like': customMovieService.likesMoviesId.includes(movie.id)}"
-                (click)="toFavoritesMovies(movie)"></i>
+            <div class="fav-container">
+                <i class="fas fa-heart fa-2x"
+                   [ngClass]="{ 'like': customMovieService.likesMoviesId.includes(movie.id)}"
+                   (click)="toFavoritesMovies(movie)">
+                </i>
+            </div>
 
             <img [src]="movie.poster_path | poster"
-                class="img-fluid poster"
-                (click)="onMovieClick(movie)"
-                style="cursor: pointer; margin-top: -100px;">
-        
+                 class="img-fluid poster"
+                 (click)="onMovieClick(movie)">
+
         </div>
 
         <div>
-            <h4 style="font-size: 18px; margin-top: 10px; margin-bottom: 0px;">
-                {{movie.title}}
+            <h4 class="movie-title">
+                {{ movie.title }}
             </h4>
-            <small class="text-white"style="color: #7B87B8 !important;">
-                {{movie.release_date | date: 'yyyy' }}
-            </small>
+            <div class="year mb-2">
+                {{ movie.release_date | date: 'yyyy' }}
+            </div>
         </div>
         
-
-
-
     </div>
 </div>

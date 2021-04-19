@@ -8,7 +8,6 @@ import firebase from 'firebase/app';
 // Interfaces
 import { Usuario } from '../interfaces/usuario.interface';
 import { DatabaseService } from './database.service';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -59,15 +58,11 @@ export class AuthService {
 		await this.afAuth.createUserWithEmailAndPassword(email, password)
 			.then((userCredential) => {
 				this.setCurrentUserByEmail(name, userCredential);
+				this.dbService.createUser(this.currentUser);
+				this.router.navigateByUrl('');
 			})
 			.catch((error) => {
 				errorMsg = error.message;
-			})
-			.finally( () => {
-				if (this.currentUser) {
-					this.dbService.createUser(this.currentUser);
-					this.router.navigateByUrl('');
-				}
 			});
 
 		return errorMsg;
@@ -83,26 +78,26 @@ export class AuthService {
 					this.userActive = true;
 					this.router.navigateByUrl('');
 				})
-				.catch( error => {
-					errorMsg = error.message;
-				});
+				.catch( error => errorMsg = error.message );
 
 		return errorMsg;
 
 	}
 
-	loginGoogle(): void {
+	async loginGoogle(): Promise<string> {
+
+		let errorMsg = '';
+
 		this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
 			.then( result => {
 				this.setCurrentUserByGoogle(result);
+				this.dbService.createUser(this.currentUser);
+				this.router.navigateByUrl('');
 			})
-			.catch( error => console.warn({ error }))
-			.finally( () => {
-				if (this.currentUser) {
-					this.dbService.createUser(this.currentUser);
-					this.router.navigateByUrl('');
-				}
-			});
+			.catch( error => errorMsg = error.message );
+
+		return errorMsg;
+
 	}
 
   	logout(): void {
@@ -148,8 +143,8 @@ export class AuthService {
 		}
 	}
 
-	updateProfileName(displayName: string): void {
-		firebase.auth().currentUser.updateProfile({ displayName })
+	async updateProfileName(displayName: string): Promise<void> {
+		return await firebase.auth().currentUser.updateProfile({ displayName })
 			.then( () => {
 				// location.reload();
 			})
